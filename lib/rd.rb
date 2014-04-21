@@ -3,6 +3,7 @@ end
 
 require 'ostruct'
 require_relative 'use_case.rb'
-require_relative 'rd/database/in_memory.rb'
-Dir[File.dirname(__FILE__) + '/use_case/*.rb'].each {|file| require_relative file }
-Dir[File.dirname(__FILE__) + '/rd/entities/*.rb'].each {|file| require_relative file }
+#require_relative 'rd/database/in_memory.rb'
+Gem.find_files("rd/use_case/*.rb").each { |path| require path }
+Gem.find_files("rd/entities/*.rb").each { |path| require path }
+Gem.find_files("rd/database/*.rb").each { |path| require path }
