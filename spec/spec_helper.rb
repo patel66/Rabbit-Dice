@@ -1,1 +1,2 @@
-require '..'
+require_relative '../lib/rd.rb'
+
