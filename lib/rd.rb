@@ -1,4 +1,4 @@
-module RB
+module RD
 
 require 'ostruct'
 require_relative 'use_case.rb'
