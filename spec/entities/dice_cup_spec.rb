@@ -23,5 +23,4 @@ describe "DiceCup" do
     expect(current_dice.size).to eq(2)
     expect(dice_cup.dice_in_cup.size).to eq(11)
   end
-
 end
