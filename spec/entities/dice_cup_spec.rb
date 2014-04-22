@@ -12,7 +12,7 @@ describe "DiceCup" do
     old_dice_cup_array = dice_cup.dice_in_cup.dup
     dice_cup.shuffle
     expect(dice_cup.dice_in_cup.size).to eq(13)
-    expect(dice_cup.dice_in_cup).to_not eq(dice_cup.dice_in_cup)
+    expect(dice_cup.dice_in_cup).to_not eq(old_dice_cup_array)
   end
 
   it "provides a certain number of die" do
