@@ -19,5 +19,9 @@ module RD
                       "shot", "shot", "shot"]
       end
     end
+
+    def roll
+      return @die_sides[rand(6)]
+    end
   end
 end
