@@ -1,8 +1,10 @@
 module RD
 	class Game
-		attr_accessor :player_list
+		attr_accessor :players, :scores, :rounds
 		def initialize 
-			player_list = []
+			player = []
+			scores = []
+			rounds = []
 		end 
 	end
 end
