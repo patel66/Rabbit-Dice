@@ -1,7 +1,7 @@
 module RD
   class Round < Entity
 
-    attr_accessor :current_player_id, :current_scores, :starting_scores, :players, :round_over, :id
+    attr_accessor :current_player_id, :current_scores, :starting_scores, :players, :round_over, :id, :game_id
 
     def initialize(attrs)
       super(attrs)
@@ -13,7 +13,6 @@ module RD
       @dice_holder = []
       @roll_history = {}
       @dice_cup = RD::DiceCup.new
-
     end
 
     def continue

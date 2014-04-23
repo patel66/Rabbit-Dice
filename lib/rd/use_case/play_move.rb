@@ -1,11 +1,14 @@
 module RD
   class PlayMove < UseCase
     def run(attrs)
-      RD::Database.db.get_game(attrs[:game_id])
+      game = RD::Database.db.get_game(attrs[:game_id])
+      round = RD::Database.db.get_game(current_round)
       case
       when attrs[:move] == "continue"
         ## run 'round.continue'
+        round_result = round.continue
         ## IF round is over
+
           ## IF game is over
             ## return game_over, winner, etc
           ## ELSE
