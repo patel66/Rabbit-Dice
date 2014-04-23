@@ -1,7 +1,7 @@
 module RD
   class Round < Entity
 
-    attr_accessor :current_player_id, :current_scores, :starting_scores, :players, :round_over
+    attr_accessor :current_player_id, :current_scores, :starting_scores, :players, :round_over, :id
 
     def initialize(attrs)
       super(attrs)

@@ -16,11 +16,14 @@ module RD
         @rounds = {}
       end
 
-      def create_game(players)
-        game = Game.new(players)
+      def create_game(attrs)
+        attrs[:id] = (@game_id_counter += 1)
+        game = Game.new(attrs)
       end
 
-      def create_round(
+      def create_round(attrs)
+        attrs[:id] = (@round_id_counter += 1)
+        round = Round.new(attrs)
       end
     end
   end
