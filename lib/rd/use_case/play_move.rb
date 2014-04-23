@@ -6,6 +6,7 @@ module RD
       case
       when attrs[:move] == "continue"
 
+
       when move == "stop"
       end
     end

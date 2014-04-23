@@ -46,7 +46,8 @@ module RD
       @roll_history[@current_player_id] << dice_rolls
 
       return { round_over: @round_over, pending_score: @pending_score,
-                current_scores: @current_scores, rolls: dice_rolls }
+                current_scores: @current_scores, rolls: dice_rolls,
+                 current_player_id: @current_player_id }
     end
 
 
