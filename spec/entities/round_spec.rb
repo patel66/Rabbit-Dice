@@ -23,24 +23,25 @@ describe 'Round' do
 
   it "plays an opening move with all 'dodge'" do
     round = RD::Round.new({ players: ["Bob", "Bill", "Bubba"], starting_scores: [0,5,6] })
-    RD::Die.any_instance.stub(:roll).and_return("captured")
+    RD::Die.any_instance.stub(:roll).and_return("dodge")
     current_player_id = round.current_player_id
     result =  round.continue
     expect(result[:round_over]).to eq(false)
-    expect(result[:pending_score]).to eq(3)
+    expect(result[:pending_score]).to eq(0)
     expect(result[:current_scores]).to eq([0,5,6])
-    expect(result[:rolls]).to eq(["captured", "captured", "captured"])
+    expect(result[:rolls]).to eq(["dodge", "dodge", "dodge"])
   end
 
-  it "plays an opening move with all 'shots'" do
+  it "plays an opening move with all 'shot'" do
     round = RD::Round.new({ players: ["Bob", "Bill", "Bubba"], starting_scores: [0,5,6] })
-    RD::Die.any_instance.stub(:roll).and_return("captured")
+    RD::Die.any_instance.stub(:roll).and_return("shot")
     current_player_id = round.current_player_id
     result =  round.continue
     expect(result[:round_over]).to eq(false)
-    expect(result[:pending_score]).to eq(3)
+    expect(result[:current_player_id]).to eq(current_player_id += 1)
+    expect(result[:pending_score]).to eq(0)
     expect(result[:current_scores]).to eq([0,5,6])
-    expect(result[:rolls]).to eq(["captured", "captured", "captured"])
+    expect(result[:rolls]).to eq(["shot", "shot", "shot"])
   end
 
 
