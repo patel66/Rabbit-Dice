@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "CreateGame" do
+describe "StartGame" do
 
   it "Creates a Game with the players array it is passed" do
     result = RD::CreateGame.run({ players: ["Tom", "Jerry"] })
