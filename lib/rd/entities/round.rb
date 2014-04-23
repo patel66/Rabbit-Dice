@@ -11,7 +11,9 @@ module RD
       @pending_shots = 0
       @round_over = false
       @dice_holder = []
+      @roll_history = {}
       @dice_cup = RD::DiceCup.new
+
     end
 
     def continue
@@ -37,6 +39,12 @@ module RD
         self.stop
       end
 
+      if @roll_history[@current_player_id] == nil
+        @roll_history[@current_player_id] = []
+      end
+
+      @roll_history[@current_player_id] << dice_rolls
+
       return { round_over: @round_over, pending_score: @pending_score,
                 current_scores: @current_scores, rolls: dice_rolls }
     end
@@ -52,7 +60,7 @@ module RD
       end
 
       return { round_over: @round_over, current_scores: @current_scores,
-              rolls: dice_rolls, current_player_id: current_player_id }
+              current_player_id: current_player_id }
 
     end
   end
