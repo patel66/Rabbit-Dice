@@ -1,7 +1,7 @@
 module RD
   module Database
     def self.db
-      @@db ||= InMemory.new
+      @db ||= InMemory.new
     end
 
     class InMemory
@@ -20,7 +20,7 @@ module RD
         game = Game.new(players)
       end
 
-      def create_round()
+      def create_round(
       end
     end
   end
