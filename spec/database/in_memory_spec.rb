@@ -17,4 +17,14 @@ describe 'database' do
     expect(round.starting_scores).to eq([0,5,6])
     expect(round2.id).to eq(round.id + 1)
   end
+
+  it 'can get the game' do
+    g1 = RD::Database.db.create_game({ players: ["Bob", "Bill", "Bubba"] })
+    RD::Database.db.create_game({ players: ["Bob", "Bill", "Bubba"] })
+    
+    game= RD::Database.db.get_game('101')
+
+
+    expect(game.id).to eq(g1.id) 
+  end 
 end
