@@ -8,12 +8,39 @@ module RD
       @current_player_id = 0
       @current_scores = starting_scores.dup
       @pending_score = 0
+      @pending_shots = 0
       @round_over = false
+      @dice_holder = []
+      @dice_cup = RD::DiceCup.new
     end
 
     def continue
+      # fill the dice holder
+      @dice_holder.merge(@dice_cup.get_dice(3 - @dice_holder.size))
 
+
+      dice_rolls = @dice_holder.map { |die| die.roll }
+
+      dice_rolls.reverse.each_with_index do |roll, index|
+        case roll
+        when "captured"
+          @pending_score += 1
+          @dice_holder.delete_at(index)
+        when "shot"
+          @pending_shots += 1
+          @dice_holder.delete_at(index)
+        end
+      end
+
+      if @pending_shots >= 3
+        @pending_score = 0
+        self.stop
+      end
+
+      return { round_over: @round_over, pending_score: @pending_score,
+                current_scores: @current_scores }
     end
+
 
     def stop
       @current_scores[@current_player_id] += @pending_score
@@ -24,6 +51,7 @@ module RD
         @round_over = true
       end
     end
+
   end
 end
 

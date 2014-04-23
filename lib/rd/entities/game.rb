@@ -5,6 +5,6 @@ module RD
 			@players = players
 			@scores = Array.new(@players.length){0}
 			@rounds = []
-		end 
+		end
 	end
 end
