@@ -16,7 +16,7 @@ module RD
 
     def continue
       # fill the dice holder
-      @dice_holder.merge(@dice_cup.get_dice(3 - @dice_holder.size))
+      @dice_holder.concat(@dice_cup.get_dice(3 - @dice_holder.size))
 
 
       dice_rolls = @dice_holder.map { |die| die.roll }
@@ -38,7 +38,7 @@ module RD
       end
 
       return { round_over: @round_over, pending_score: @pending_score,
-                current_scores: @current_scores }
+                current_scores: @current_scores, rolls: dice_rolls }
     end
 
 
@@ -50,8 +50,11 @@ module RD
       if (@current_player_id == @players.size) || (@current_scores[(@current_player_id - 1)] >= 13)
         @round_over = true
       end
-    end
 
+      return { round_over: @round_over, current_scores: @current_scores,
+              rolls: dice_rolls, current_player_id: current_player_id }
+
+    end
   end
 end
 
