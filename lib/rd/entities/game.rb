@@ -4,7 +4,7 @@ module RD
 		def initialize(attrs)
 			@players = attrs[:players]
       @id = attrs[:id]
-			@scores = Array.new(@players.length){0}
+      @scores = Array.new(@players.length){0}
 			@rounds = []
 		end
 

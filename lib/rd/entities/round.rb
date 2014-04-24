@@ -2,6 +2,7 @@ module RD
   class Round < Entity
 
     attr_accessor :current_player_id, :current_scores, :starting_scores, :players, :round_over, :id, :game_id
+    attr_reader :pending_score
 
     def initialize(attrs)
       super(attrs)
@@ -17,8 +18,8 @@ module RD
 
     def continue
       # fill the dice holder
-      @dice_holder.concat(@dice_cup.get_dice(3 - @dice_holder.size))
 
+      @dice_holder.concat(@dice_cup.get_dice(3 - @dice_holder.size))
 
       dice_rolls = @dice_holder.map { |die| die.roll }
 

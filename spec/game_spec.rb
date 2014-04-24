@@ -19,7 +19,7 @@ describe "Game" do
   it "gets the current round" do
     game = RD::Database.db.create_game({ players: ["Bob", "Bill", "Bubba"] })
     round = RD::Database.db.create_round({ players: game.players, starting_scores: game.scores , game_id: game.id })
-    binding.pry
+    # binding.pry
     expect(game.current_round.id).to eq(round.id)
   end
 
@@ -30,7 +30,7 @@ describe "Game" do
   it "returns the proper winner" do
   end
 
-  it "returns the proper winner name"
+  it "returns the proper winner name" do
   end
 
 end

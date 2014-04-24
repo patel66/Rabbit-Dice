@@ -47,7 +47,8 @@ describe 'Round' do
 
 
   it "says a round is over if its over" do
-    round = RD::Round.new({ players: ["Bob", "Bill", "Bubba"], starting_scores: [0,5,6] })
+    game = RD::Database.db.create_game({ players: ["Bob", "Bill", "Bubba"] })
+    round = RD::Round.new({ players: ["Bob", "Bill", "Bubba"], starting_scores: [0,5,6], game_id: game.id })
     round.stop
     round.stop
     expect(round.round_over).to eq(false)

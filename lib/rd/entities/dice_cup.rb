@@ -15,12 +15,7 @@ module RD
     end
 
     def shuffle
-      new_dice_in_cup = []
-      while(new_dice_in_cup.size < 13)
-        new_dice_in_cup << @dice_in_cup.delete_at(rand(@dice_in_cup.size))
-      end
-
-      @dice_in_cup = new_dice_in_cup
+      @dice_in_cup.shuffle!
     end
 
     def get_dice(number)
