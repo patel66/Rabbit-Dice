@@ -35,7 +35,7 @@ module RD
 
       if @pending_shots >= 3
         @pending_score = 0
-        self.stop
+        self.stop(dice_rolls)
       end
 
       if @roll_history[@current_player_id] == nil
@@ -46,22 +46,25 @@ module RD
 
       return { round_over: @round_over, pending_score: @pending_score,
                 current_scores: @current_scores, rolls: dice_rolls,
-                 current_player_id: @current_player_id }
+                 current_player_id: @current_player_id, advance_player: false }
     end
 
 
-    def stop
+    def stop(dice_rolls = nil)
+      player_scored = @pending_score
       @current_scores[@current_player_id] += @pending_score
       @pending_score = 0
       @current_player_id += 1
 
       if (@current_player_id == @players.size) || (@current_scores[(@current_player_id - 1)] >= 13)
         @round_over = true
+        game = Database.db.get_game(@game_id)
+        game.scores = @current_scores
       end
 
       return { round_over: @round_over, current_scores: @current_scores,
-              current_player_id: current_player_id }
-
+              current_player_id: current_player_id, player_scored: player_scored,
+              advance_player: true, dice_rolls: dice_rolls }
     end
   end
 end

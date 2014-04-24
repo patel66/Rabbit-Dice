@@ -16,5 +16,29 @@ module RD
       @rounds.last
     end
 
+    def game_over?
+      if @scores.max >= 13
+        return true
+      else
+        return false
+      end
+    end
+
+    def winner
+      if @scores.max < 13
+        return nil
+      else
+        return @scores.index(@scores.max)
+      end
+    end
+
+    def winner_name
+      if self.winner == nil
+        return nil
+      else
+        return @players[self.winner]
+      end
+    end
+
 	end
 end

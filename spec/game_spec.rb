@@ -23,4 +23,14 @@ describe "Game" do
     expect(game.current_round.id).to eq(round.id)
   end
 
+  it "returns game_over? = true if game is over" do
+
+  end
+
+  it "returns the proper winner" do
+  end
+
+  it "returns the proper winner name"
+  end
+
 end
